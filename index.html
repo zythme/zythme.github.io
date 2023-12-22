@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta property="og:title" content="Javascript NES Emulator">
+		<meta property="og:description" content="By Simon_34545">
+		<meta property="og:type" content="website">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="coi-serviceworker.js"></script>
+		<script src="roms.js"></script>
+		<meta charset="utf-8" />
+	</head>
+	<body style="background-color: #666; color: #fff;">
+		<script src="nesSoundEngine.js"></script>
+		<script src="number.js"></script>
+		<script src="utility.js"></script>
+		<script src="mappers/Mapper.js"></script>
+		<script src="mappers/Mapper_000.js"></script>
+		<script src="mappers/Mapper_001.js"></script>
+		<script src="mappers/Mapper_002.js"></script>
+		<script src="mappers/Mapper_003.js"></script>
+		<script src="mappers/Mapper_004.js"></script>
+		<script src="mappers/Mapper_007.js"></script>
+		<script src="mappers/Mapper_031.js"></script>
+		<script src="mappers/Mapper_066.js"></script>
+		<script src="mappers/Mapper_NSF.js"></script>
+		<script src="Cartridge.js"></script>
+		<script src="nes2C02.js"></script>
+		<script src="nes2A03.js"></script>
+		<script src="nes6502.js"></script>
+		<script src="bus.js"></script>
+		<script src="main.js"></script>
+		<pre id="log"></pre>
+		<label for="screenscale">Small screen (fast)</label>
+		<input type="checkbox" id="screenscale" name="screenscale" checked="true" onchange="screenscale=document.getElementById('screenscale').checked?1:2">
+		<br>
+		<label for="ntsc">Emulate composite video (very slow!)</label>
+		<input type="checkbox" id="ntsc" name="ntsc" onchange="ntsc=document.getElementById('ntsc').checked;document.getElementById('ntscoptions').style.display=ntsc?'block':'none'">
+		<br>
+		<div id="ntscoptions" style="display: none">
+			<label for="scanlinefilter">Scanline filter</label>
+			<input type="checkbox" id="scanlinefilter" name="scanlinefilter" onchange="scanlinefilter=document.getElementById('scanlinefilter').checked">
+			<br>
+			<label for="gamma" id="gl">Gamma: 2</label>
+			<input type="range" id="gamma" name="gamma" value="2" min="0" max="5" step="0.1" onchange="gamma=Number(document.getElementById('gamma').value);document.getElementById('gl').innerHTML = 'Gamma: ' + gamma">
+			<br>
+			<label for="brightness" id="bl">Brightness: 1</label>
+			<input type="range" id="brightness" name="brightness" value="1" min="0" max="5" step="0.1" onchange="brightness=Number(document.getElementById('brightness').value);document.getElementById('bl').innerHTML = 'Brightness: ' + brightness">
+			<br>
+			<label for="saturation" id="sl">Saturation: 1</label>
+			<input type="range" id="saturation" name="saturation" value="1" min="0" max="5" step="0.1" onchange="saturation=Number(document.getElementById('saturation').value);document.getElementById('sl').innerHTML = 'Saturation: ' + saturation">
+			<br>
+			<label for="hue" id="hl">Hue offset: 0</label>
+			<input type="range" id="hue" name="hue" value="0" min="0" max="12" step="0.1" onchange="hue=Number(document.getElementById('hue').value);document.getElementById('hl').innerHTML = 'Hue offset: ' + hue">
+			<br>
+			<label for="bluramount" id="al">Horizontal blur: 6</label>
+			<input type="range" id="bluramount" name="bluramount" value="6" min="0" max="12" step="1" onchange="bluramount=Number(document.getElementById('bluramount').value);document.getElementById('al').innerHTML = 'Horizontal blur: ' + bluramount">
+		</div>
+	</body>
+</html>
